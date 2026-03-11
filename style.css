@@ -333,51 +333,10 @@ a {
   transform: scale(1.05);
 }
 
-.cover-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(44,24,16,0.88);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.2rem;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.book-card:hover .cover-overlay {
+.book-card:hover {
   opacity: 1;
 }
 
-.book-desc-preview {
-  color: var(--parchment);
-  font-family: 'Lora', serif;
-  font-style: italic;
-  font-size: 0.82rem;
-  line-height: 1.6;
-  text-align: center;
-  margin: 0;
-}
-
-.book-badge {
-  position: absolute;
-  top: 0.65rem;
-  left: 0.65rem;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.22rem 0.55rem;
-  border-radius: 3px;
-  z-index: 2;
-}
-
-.badge-sale     { background: var(--red-accent); color: #fff; }
-.badge-classic  { background: var(--brown-mid); color: var(--parchment); }
-.badge-best     { background: var(--green-accent); color: #fff; }
-.badge-award    { background: var(--gold); color: var(--brown-dark); }
-.badge-new      { background: #2e5f8a; color: #fff; }
-.badge-default  { background: var(--brown-light); color: #fff; }
 
 .book-info {
   padding: 1rem 1.1rem 1.2rem;
