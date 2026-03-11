@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart - ReadMore</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="page-banner">
+  <div class="container">
+    <h1>Your Cart</h1>
+  </div>
+</div>
+
+<div class="container" style="padding-top:2.5rem; padding-bottom: 3rem;">
+
+  <!-- kada je prazna -->
+  <div id="empty-state" class="cart-empty-state" style="display:none;">
+    <div class="empty-icon">🛒</div>
+    <h2>Your cart is empty</h2>
+    <p>You haven't added any books yet.</p>
+    <a href="books.html" class="btn-primary-custom">Browse Books</a>
+  </div>
+
+  <!-- Kada ima nesto -->
+  <div id="cart-content" style="display:none;">
+    <div class="row g-4">
+
+      <div class="col-lg-8">
+        <div id="items-list"></div>
+
+        <div class="d-flex gap-2 mt-2 flex-wrap">
+          <button
+            onclick="clearEntireCart()"
+            style="background:none; border:1px solid rgba(155,35,53,0.3); color:var(--red-accent); border-radius:5px; padding:0.4rem 1rem; font-size:0.8rem; cursor:pointer; transition:all 0.2s;"
+            onmouseover="this.style.background='rgba(155,35,53,0.08)'"
+            onmouseout="this.style.background='none'"
+          >
+            🗑 Clear Cart
+          </button>
+          <a href="books.html" style="background:none; border:1px solid var(--border); color:var(--brown-light); border-radius:5px; padding:0.4rem 1rem; font-size:0.8rem; transition:all 0.2s; display:inline-block;"
+             onmouseover="this.style.borderColor='var(--brown-mid)'; this.style.color='var(--brown-mid)'"
+             onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--brown-light)'">
+            ← Keep Shopping
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="order-summary-box">
+          <h3>Order Summary</h3>
+          <div class="summary-line">
+            <span>Books (<span id="s-count">0</span>)</span>
+            <span id="s-subtotal">$0.00</span>
+          </div>
+          <div class="summary-line">
+            <span>Shipping</span>
+            <span id="s-shipping" style="color:var(--green-accent);">Calculated at checkout</span>
+          </div>
+          <div class="summary-line">
+            <span>Tax (8%)</span>
+            <span id="s-tax">$0.00</span>
+          </div>
+          <div class="summary-line total">
+            <span>Total</span>
+            <span class="total-amount" id="s-total">$0.00</span>
+          </div>
+          <button class="btn-checkout-now" onclick="doCheckout()">
+            Proceed to Checkout
+          </button>
+          <a href="books.html" class="continue-link">← Continue Shopping</a>
+
+          <p id="shipping-note" style="font-size:0.75rem; color:var(--brown-pale); margin-top:1rem; text-align:center;"></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="helpers.js"></script>
+<script>
+  loadNavbar('cart');
+  loadFooter();
+
+  function renderCart() {
+    var items = getCart();
+    var empty = document.getElementById('empty-state');
+    var content = document.getElementById('cart-content');
+
+    if (items.length === 0) {
+      empty.style.display = 'block';
+      content.style.display = 'none';
+      return;
+    }
+
+    empty.style.display = 'none';
+    content.style.display = 'block';
+
+    var html = items.map(function(item) {
+      var lineTotal = (item.price * item.qty).toFixed(2);
+      return `
+        <div class="cart-item-row" id="row-${item.id}">
+          <img
+            class="cart-item-cover"
+            src="${item.cover}"
+            alt="${item.title}"
+            onerror="this.src='https://placehold.co/70x95/5c3d2e/f5e6c8?text=?'"
+          />
+          <div class="cart-item-details">
+            <div class="cart-item-title">${item.title}</div>
+            <div class="cart-item-author">by ${item.author}</div>
+            <div class="cart-item-price">$${item.price.toFixed(2)} </div>
+          </div>
+          <div class="qty-controls">
+            <div class="qty-btn" onclick="changeItemQty(${item.id}, -1)">-</div>
+            <span class="qty-number">${item.qty}</span>
+            <div class="qty-btn" onclick="changeItemQty(${item.id}, +1)">+</div>
+          </div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--brown-dark); font-weight:700; min-width:65px; text-align:right;">
+            $${lineTotal}
+          </div>
+          <button class="btn-remove" onclick="deleteItem(${item.id})" title="Remove">✕</button>
+        </div>
+      `;
+    }).join('');
+
+    document.getElementById('items-list').innerHTML = html;
+    updateSummary(items);
+  }
+
+  function updateSummary(items) {
+    var subtotal   = items.reduce(function(s, i) { return s + i.price * i.qty; }, 0);
+    var count      = items.reduce(function(s, i) { return s + i.qty; }, 0);
+    var tax        = subtotal * 0.08;
+    var shipping   = subtotal >= 30 ? 'Free 🎉' : '$4.99';
+    var shippingVal = subtotal >= 30 ? 0 : 4.99;
+    var total      = subtotal + tax + shippingVal;
+
+    document.getElementById('s-count').textContent    = count;
+    document.getElementById('s-subtotal').textContent = '$' + subtotal.toFixed(2);
+    document.getElementById('s-shipping').textContent = shipping;
+    document.getElementById('s-tax').textContent      = '$' + tax.toFixed(2);
+    document.getElementById('s-total').textContent    = '$' + total.toFixed(2);
+
+    
+  }
+
+  function changeItemQty(id, delta) {
+    updateQty(id, delta);
+    renderCart();
+  }
+
+  function deleteItem(id) {
+    var row = document.getElementById('row-' + id);
+    if (row) {
+      row.style.opacity   = '0';
+      row.style.transform = 'translateX(30px)';
+      row.style.transition = 'all 0.25s';
+      setTimeout(function() {
+        removeFromCart(id);
+        renderCart();
+      }, 250);
+    }
+  }
+
+  function clearEntireCart() {
+    if (!confirm('Remove all books from your cart?')) return;
+    localStorage.removeItem('readmore_cart');
+    updateCartBadge();
+    renderCart();
+    showToast('Cart cleared', 'info');
+  }
+
+  function doCheckout() {
+    var items = getCart();
+    if (items.length === 0) return;
+
+    showToast('🎉 Order placed! Thank you for your purchase.', 'success');
+    setTimeout(function() {
+      localStorage.removeItem('readmore_cart');
+      updateCartBadge();
+      renderCart();
+    }, 900);
+  }
+
+  renderCart();
+</script>
+
+</body>
+</html>
