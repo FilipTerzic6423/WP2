@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cart - ReadMore</title>
+  <meta name="description" content="Review the books in your ReadMore shopping cart. Update quantities, remove items, and proceed to checkout to complete your order.">
+  <meta name="keywords" content="book cart, online bookstore cart, readmore shopping cart, buy books online, bookstore checkout">
+  <meta name="author" content="Filip Terzic">
+
+  <meta property="og:title" content="Cart - ReadMore">
+  <meta property="og:description" content="View the books in your cart and proceed to checkout at ReadMore bookstore.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://filipterzic6423.github.io/WP2/cart.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -20,7 +28,6 @@
 
   <!-- kada je prazna -->
   <div id="empty-state" class="cart-empty-state" style="display:none;">
-    <div class="empty-icon">🛒</div>
     <h2>Your cart is empty</h2>
     <p>You haven't added any books yet.</p>
     <a href="books.html" class="btn-primary-custom">Browse Books</a>
@@ -38,14 +45,13 @@
             onclick="clearEntireCart()"
             style="background:none; border:1px solid rgba(155,35,53,0.3); color:var(--red-accent); border-radius:5px; padding:0.4rem 1rem; font-size:0.8rem; cursor:pointer; transition:all 0.2s;"
             onmouseover="this.style.background='rgba(155,35,53,0.08)'"
-            onmouseout="this.style.background='none'"
-          >
-            🗑 Clear Cart
+            onmouseout="this.style.background='none'">
+            Clear Cart
           </button>
           <a href="books.html" style="background:none; border:1px solid var(--border); color:var(--brown-light); border-radius:5px; padding:0.4rem 1rem; font-size:0.8rem; transition:all 0.2s; display:inline-block;"
-             onmouseover="this.style.borderColor='var(--brown-mid)'; this.style.color='var(--brown-mid)'"
+             onmouseover="this.style.borderColor='var(--brown-lol)'; this.style.color='var(--brown-lol)'"
              onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--brown-light)'">
-            ← Keep Shopping
+            Keep Shopping
           </a>
         </div>
       </div>
@@ -72,7 +78,7 @@
           <button class="btn-checkout-now" onclick="doCheckout()">
             Proceed to Checkout
           </button>
-          <a href="books.html" class="continue-link">← Continue Shopping</a>
+          <a href="books.html" class="continue-link">Continue Shopping</a>
 
           <p id="shipping-note" style="font-size:0.75rem; color:var(--brown-pale); margin-top:1rem; text-align:center;"></p>
         </div>
@@ -139,7 +145,7 @@
     var subtotal   = items.reduce(function(s, i) { return s + i.price * i.qty; }, 0);
     var count      = items.reduce(function(s, i) { return s + i.qty; }, 0);
     var tax        = subtotal * 0.08;
-    var shipping   = subtotal >= 30 ? 'Free 🎉' : '$4.99';
+    var shipping   = subtotal >= 30 ? 'Free' : '$4.99';
     var shippingVal = subtotal >= 30 ? 0 : 4.99;
     var total      = subtotal + tax + shippingVal;
 
@@ -160,13 +166,10 @@
   function deleteItem(id) {
     var row = document.getElementById('row-' + id);
     if (row) {
-      row.style.opacity   = '0';
-      row.style.transform = 'translateX(30px)';
-      row.style.transition = 'all 0.25s';
       setTimeout(function() {
         removeFromCart(id);
         renderCart();
-      }, 250);
+      }, 0);
     }
   }
 
@@ -182,7 +185,7 @@
     var items = getCart();
     if (items.length === 0) return;
 
-    showToast('🎉 Order placed! Thank you for your purchase.', 'success');
+    showToast('Order placed! Thank you for your purchase.', 'success');
     setTimeout(function() {
       localStorage.removeItem('readmore_cart');
       updateCartBadge();

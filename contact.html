@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact - ReadMore</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
+  <title>Contatc - ReadMore</title>
+  <meta name="description" content="Contact ReadMore bookstore for questions about orders, book recommendations, or support. Reach to us by email, phone, or our contact form.">
+  <meta name="keywords" content="contact readmore, bookstore contact, book recommendations, customer support, readmore bookstore">
+  <meta name="author" content="Filip Terzic">
+
+  <meta property="og:title" content="Contact - ReadMore">
+  <meta property="og:description" content="Get in touch with ReadMore bookstore. Ask about orders, book recommendations, or general inquiries.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://filipterzic6423.github.io/WP2/contact.html">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='1em' font-size='90'>📖</text></svg>" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -29,7 +38,7 @@
           </p>
 
           <div class="contact-info-item">
-            <span class="contact-icon">📍</span>
+            <span class="contact-icon"></span>
             <div>
               <div class="contact-label">Address</div>
               <div class="contact-value">Zdravka Čelara 16, Belgrade</div>
@@ -37,7 +46,7 @@
           </div>
 
           <div class="contact-info-item">
-            <span class="contact-icon">✉️</span>
+            <span class="contact-icon"></span>
             <div>
               <div class="contact-label">Email</div>
               <div class="contact-value">ReadMore@gmail.com</div>
@@ -45,7 +54,7 @@
           </div>
 
           <div class="contact-info-item">
-            <span class="contact-icon">📞</span>
+            <span class="contact-icon"></span>
             <div>
               <div class="contact-label">Phone</div>
               <div class="contact-value">061 234 5678</div>
@@ -82,7 +91,7 @@
             <div class="form-group">
               <label for="inp-subject">Subject <span class="required">*</span></label>
               <select id="inp-subject" class="form-control">
-                <option value="">-- Select a subject --</option>
+                <option value="0">Select a subject</option>
                 <option value="order">Order question</option>
                 <option value="book">Book recommendation</option>
                 <option value="return">Returns &amp; exchanges</option>
@@ -112,7 +121,7 @@
               <button
                 onclick="resetForm()"
                 style="background:none; border:1px solid var(--border); color:var(--brown-light); border-radius:5px; padding:0.6rem 1.2rem; font-size:0.875rem; cursor:pointer; transition:all 0.2s;"
-                onmouseover="this.style.borderColor='var(--brown-mid)'"
+                onmouseover="this.style.borderColor='var(--brown-lol)'"
                 onmouseout="this.style.borderColor='var(--border)'"
               >
                 Clear
@@ -132,16 +141,6 @@
 <script>
   loadNavbar('contact');
   loadFooter();
-  document.getElementById('inp-message').addEventListener('input', function() {
-    var len     = this.value.length;
-    var counter = document.getElementById('char-counter');
-    counter.textContent = len + ' / 500 characters';
-    if (len > 500) {
-      counter.style.color = 'var(--red-accent)';
-    } else {
-      counter.style.color = 'var(--brown-pale)';
-    }
-  });
 
   function validateForm(name, email, subject, message, phone) {
 

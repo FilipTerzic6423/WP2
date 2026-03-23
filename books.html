@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Books - ReadMore</title>
+  <meta name="description" content="Browse the full ReadMore bookstore collection. Discover classic literature, fantasy, mystery, sci-fi and more. Find your next favorite book.">
+  <meta name="keywords" content="books online, bookstore, buy books online, classic books, fantasy books, mystery novels, sci fi books, ReadMore bookstore">
+  <meta name="author" content="Filip Terzic">
+
+  <meta property="og:title" content="Books - ReadMore">
+  <meta property="og:description" content="Explore the full collection of books at ReadMore. Filter by genre, search authors, and find your next great read.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://filipterzic6423.github.io/WP2/books.html">
+
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -25,18 +34,18 @@
         type="text"
         id="search-box"
         class="form-control"
-        placeholder="🔍  Search by title, author, genre…"
+        placeholder="Search by title, author, genre…"
       />
     </div>
 
     <select id="genre-select" class="form-select" style="min-width: 155px;">
       <option value="">All Genres</option>
-      <option value="Classic">📜 Classic</option>
-      <option value="Thriller">🔪 Thriller</option>
-      <option value="Historical">🏛️ Historical</option>
-      <option value="Fantasy">🧙 Fantasy</option>
-      <option value="Sci-Fi">🚀 Sci-Fi</option>
-      <option value="Mystery">🔍 Mystery</option>
+      <option value="Classic">Classic</option>
+      <option value="Thriller">Thriller</option>
+      <option value="Historical">Historical</option>
+      <option value="Fantasy">Fantasy</option>
+      <option value="Sci-Fi">Sci-Fi</option>
+      <option value="Mystery">Mystery</option>
     </select>
 
     <select id="sort-select" class="form-select" style="min-width: 175px;">
@@ -49,11 +58,9 @@
       <option value="year-old">Oldest First</option>
     </select>
 
-    <button class="btn-reset" onclick="resetAll()">✕ Reset</button>
+    <button class="btn-reset" onclick="resetAll()">X Reset</button>
 
   </div>
-
-  <p class="results-info" id="results-info">Showing all books</p>
 
   <div id="loading-area" class="loading-spinner">Loading books…</div>
 
@@ -62,9 +69,8 @@
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4" id="books-grid"></div>
 
   <div id="no-results" class="no-results-msg" style="display:none;">
-    <div style="font-size:2.5rem; margin-bottom:0.75rem;">📚</div>
-    <h3>No books found</h3>
-    <p>Try changing your search or filters.</p>
+        <h3>No books found</h3>
+    <p>Try other filters!</p>
     <button class="btn-primary-custom mt-3" onclick="resetAll()">Clear All Filters</button>
   </div>
 
@@ -90,7 +96,7 @@
 
   async function fetchBooks() {
     var loadingEl = document.getElementById('loading-area');
-    var msgEl     = document.getElementById('page-msg');
+    var msgEl = document.getElementById('page-msg');
 
     try {
       var response = await fetch('books.json');
@@ -101,9 +107,6 @@
 
       var data = await response.json();
 
-      if (!Array.isArray(data)) {
-        throw new Error('Expected an array of books but got something else');
-      }
 
       if (data.length === 0) {
         throw new Error('The books list is empty');
@@ -139,7 +142,6 @@
         return book.title.toLowerCase().includes(query)
             || book.author.toLowerCase().includes(query)
             || book.genre.toLowerCase().includes(query)
-            || book.description.toLowerCase().includes(query);
       });
     }
 
@@ -188,15 +190,11 @@
     var toShow = filteredBooks.slice(0, visibleCount);
     grid.innerHTML = toShow.map(renderBookCard).join('');
 
-    infoEl.innerHTML = 'Showing <strong>' + toShow.length + '</strong> of <strong>' + filteredBooks.length + '</strong> books';
-
-
     var remaining = filteredBooks.length - toShow.length;
     if (remaining > 0) {
       lmWrap.style.display = 'block';
       lmBtn.disabled = false;
       lmBtn.textContent = 'Load More Books';
-      lmInfo.textContent = remaining + ' more book' + (remaining === 1 ? '' : 's') + ' remaining';
     } else {
       lmWrap.style.display = 'none';
     }

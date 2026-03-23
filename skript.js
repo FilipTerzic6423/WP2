@@ -24,7 +24,7 @@ function loadNavbar(activePage) {
             </li>
           </ul>
           <a href="cart.html" class="nav-cart-btn ${activePage === 'cart' ? 'active' : ''}">
-            🛒 Cart
+            Cart
             <span id="cart-badge" class="cart-badge">0</span>
           </a>
         </div>
@@ -42,7 +42,7 @@ function loadFooter() {
         <div class="row g-4">
           <div class="col-md-4">
             <div class="footer-brand">📖 ReadMore</div>
-            <p class="footer-desc">Your favorite corner for great books. Find your next favourite read.</p>
+            <p class="footer-desc">Your favorite corner for great books. Find your next favorite read.</p>
           </div>
           <div class="col-md-2 offset-md-2">
             <h6 class="footer-heading">Browse</h6>
@@ -184,7 +184,7 @@ function handleAddToCart(bookId, btn) {
 
   
   var original = btn.textContent;
-  btn.textContent = '✓ Added!';
+  btn.textContent = 'Added!';
   btn.classList.add('added');
   btn.disabled = true;
 
@@ -197,7 +197,7 @@ function handleAddToCart(bookId, btn) {
   showToast('"' + book.title + '" added to your cart!');
 }
 
-// confirmation za cart
+// Toast za cart
 function showToast(message, type) {
   type = type || 'success';
 
@@ -211,11 +211,10 @@ function showToast(message, type) {
   var toast = document.createElement('div');
   toast.className = 'toast-popup toast-' + type;
 
-  var icon = type === 'error' ? '⚠' : type === 'info' ? 'ℹ' : '✓';
-  toast.innerHTML = `<span class="toast-icon">${icon}</span> ${message}`;
+  toast.innerHTML = `${message}`;
   container.appendChild(toast);
 
-//nestaje posle 3 sec
+// nestaje posle 3 sec
   setTimeout(function() {
     toast.style.opacity = '0';
     toast.style.transform = 'translateY(10px)';

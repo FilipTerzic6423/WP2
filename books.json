@@ -24,8 +24,7 @@
     "reviews": 10000,
     "year": 2012,
     "pages": 422,
-    "cover": "https://www.knjizare-vulkan.rs/files/watermark/files/images/slike_proizvoda/thumbs_w/394844_w_0_0px.jpg",
-    "badge": "Bestseller"
+    "cover": "https://www.knjizare-vulkan.rs/files/watermark/files/images/slike_proizvoda/thumbs_w/394844_w_0_0px.jpg"
   },
   {
     "id": 3,
@@ -38,8 +37,7 @@
     "reviews": 1200,
     "year": 1989,
     "pages": 973,
-    "cover": "https://images3.penguinrandomhouse.com/cover/9781429586764",
-    "badge": null
+    "cover": "https://images3.penguinrandomhouse.com/cover/9781429586764"
   },
   {
     "id": 4,
@@ -52,8 +50,7 @@
     "reviews": 4000,
     "year": 2019,
     "pages": 336,
-    "cover": "https://m.media-amazon.com/images/I/91lslnZ-btL._AC_UF1000,1000_QL80_.jpg",
-    "badge": "Sale"
+    "cover": "https://m.media-amazon.com/images/I/91lslnZ-btL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 5,
@@ -66,8 +63,7 @@
     "reviews": 8000,
     "year": 1813,
     "pages": 432,
-    "cover": "https://m.media-amazon.com/images/I/712P0p5cXIL._AC_UF1000,1000_QL80_.jpg",
-    "badge": "Classic"
+    "cover": "https://m.media-amazon.com/images/I/712P0p5cXIL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 6,
@@ -80,8 +76,7 @@
     "reviews": 2500,
     "year": 2014,
     "pages": 531,
-    "cover": "https://m.media-amazon.com/images/I/81WY6M9XikL._AC_UF1000,1000_QL80_.jpg",
-    "badge": "Award Winner"
+    "cover": "https://m.media-amazon.com/images/I/81WY6M9XikL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 7,
@@ -94,8 +89,7 @@
     "reviews": 14000,
     "year": 1965,
     "pages": 688,
-    "cover": "https://m.media-amazon.com/images/I/81Ua99CURsL._AC_UF1000,1000_QL80_.jpg",
-    "badge": "Sale"
+    "cover": "https://m.media-amazon.com/images/I/81Ua99CURsL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 8,
@@ -108,8 +102,7 @@
     "reviews": 8000,
     "year": 1939,
     "pages": 264,
-    "cover": "https://m.media-amazon.com/images/I/81nChcVy7CL._AC_UF1000,1000_QL80_.jpg",
-    "badge": "Classic"
+    "cover": "https://m.media-amazon.com/images/I/81nChcVy7CL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 9,
@@ -122,8 +115,7 @@
     "reviews": 4000,
     "year": 2007,
     "pages": 662,
-    "cover": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1704917687i/186074.jpg",
-    "badge": null
+    "cover": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1704917687i/186074.jpg"
   },
   {
     "id": 10,
@@ -136,8 +128,7 @@
     "reviews": 20000,
     "year": 1949,
     "pages": 328,
-    "cover": "https://upload.wikimedia.org/wikipedia/sr/0/08/1984_vv.jpg",
-    "badge": "Classic"
+    "cover": "https://upload.wikimedia.org/wikipedia/sr/0/08/1984_vv.jpg"
   },
   {
     "id": 11,
@@ -150,8 +141,7 @@
     "reviews": 3000,
     "year": 2009,
     "pages": 650,
-    "cover": "https://m.media-amazon.com/images/I/715MYJy6kjL._AC_UF1000,1000_QL80_.jpg",
-    "badge": "Award Winner"
+    "cover": "https://m.media-amazon.com/images/I/715MYJy6kjL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 12,
@@ -164,8 +154,7 @@
     "reviews": 7000,
     "year": 2005,
     "pages": 644,
-    "cover": "https://m.media-amazon.com/images/I/81YW99XIpJL._UF1000,1000_QL80_.jpg",
-    "badge": "Sale"
+    "cover": "https://m.media-amazon.com/images/I/81YW99XIpJL._UF1000,1000_QL80_.jpg"
   },
   {
     "id": 13,
@@ -178,8 +167,7 @@
     "reviews": 5000,
     "year": 2006,
     "pages": 541,
-    "cover": "https://m.media-amazon.com/images/I/91U6rc7u0yL._AC_UF1000,1000_QL80_.jpg",
-    "badge": null
+    "cover": "https://m.media-amazon.com/images/I/91U6rc7u0yL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 14,
@@ -192,7 +180,6 @@
     "reviews": 3000,
     "year": 2007,
     "pages": 429,
-    "cover": "https://m.media-amazon.com/images/I/91jMHH2+qHL._UF1000,1000_QL80_.jpg",
-    "badge": "New"
+    "cover": "https://m.media-amazon.com/images/I/91jMHH2+qHL._UF1000,1000_QL80_.jpg"
   }
 ]
