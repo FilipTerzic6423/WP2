@@ -4,10 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home - Readmore</title>
-  <meta name="description" content="ReadMore is an online bookstore where you can discover classics, thrillers, fantasy and more. Browse top rated books and find your next great read.">
-  <meta name="keywords" content="books, online bookstore, readmore, classic books, fantasy books, thriller books, mystery books, science fiction books">
+  <meta name="description" content="ReadMore is an online bookstore where you can discover classics, thrillers, fantasy and more.
+     Browse top rated books and find your next great read.">
+  <meta name="keywords" content="books, online bookstore, readmore, classic books, fantasy books, thriller books, mystery books, 
+  science fiction books">
   <meta name="author" content="Filip Terzic">
-
   <meta property="og:title" content="Home - ReadMore">
   <meta property="og:description" content="Discover your next favorite book. Browse classics, thrillers, fantasy and more at ReadMore bookstore.">
   <meta property="og:type" content="website">
@@ -25,11 +26,8 @@
 
       <div class="col-lg-6 hero-content">
         
-        <h1>Find Your Next<br><em>Great Read</em></h1>
-        <p>
-          Classics, thrillers, historical epics, fantasy worlds and more -
-          hand picked books for every kind of reader.
-        </p>
+        <h1>Find Your Next<br/><em>Great Read</em></h1>
+        <p>Classics, thrillers, historical epics, fantasy worlds and more - hand picked books for every kind of reader.</p>
         <div class="d-flex gap-3 flex-wrap">
           <a href="books.html" class="btn-primary-custom">Browse All Books</a>
           <a href="books.html?genre=Classic" class="btn-secondary-custom">View Classics</a>
@@ -96,7 +94,6 @@
       <div class="section-header mb-0">
         <h2 class="section-title mb-0">Top Rated Books</h2>
       </div>
-      <a href="books.html" class="btn-secondary-custom" style="font-size:0.8rem; padding:0.55rem 1.3rem;">See All →</a>
     </div>
 
     <div id="featured-loading" class="loading-spinner">Loading books…</div>
@@ -107,20 +104,11 @@
 
 <section style="padding: 0 0 3rem;">
   <div class="container">
-    <div style="
-      background: linear-gradient(135deg, var(--brown-dark), #3d1f12);
-      border-radius: 12px;
-      padding: 3rem;
-      text-align: center;
-      border: 1px solid rgba(184,134,11,0.2);
-    ">
-      <p style="color:var(--gold); font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:700; margin-bottom:0.6rem;">Special Offer</p>
-      <h2 style="color:var(--pale); font-size:clamp(1.6rem,3vw,2.5rem); margin-bottom:0.75rem;">
-        Free shipping on orders over $30
-      </h2>
-      <p style="color:var(--brown-pale); font-family:'Lora',serif; font-style:italic; margin-bottom:1.8rem; max-width:420px; margin-left:auto; margin-right:auto;">
-        Build your reading list and let us deliver it right on your door.
-      </p>
+    <div style="background: linear-gradient(#3d1f12); border-radius: 12px; padding: 3rem; text-align: center; border: 1px solid rgba(184,134,11,0.2);">
+      <p style="color:#EFBF04; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:700; margin-bottom:0.6rem;">Special Offer</p>
+      <h2 style="color:#f5e6c8; font-size:clamp(1.6rem,3vw,2.5rem); margin-bottom:0.75rem;">Free shipping on orders over $30</h2>
+      <p style="color:#c4a882; font-family:'Lora',serif; font-style:italic; margin-bottom:1.8rem; max-width:420px; margin-left:auto; margin-right:auto;">
+        Build your reading list and let us deliver it right on your door.</p>
       <a href="books.html" class="btn-primary-custom">Shop Now</a>
     </div>
   </div>
@@ -157,7 +145,7 @@
     } catch (err) {
       console.log('Failed to load featured books:', err);
       loadingEl.style.display = 'none';
-      showMessage('featured-msg', 'Could not load books. Please check your connection and try again.', 'error');
+      showMessage('featured-msg', 'Could not load books', 'error');
     }
   }
 

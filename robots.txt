@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://filipterzic6423.github.io/WP2/sitemap.xml

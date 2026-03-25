@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cart - ReadMore</title>
-  <meta name="description" content="Review the books in your ReadMore shopping cart. Update quantities, remove items, and proceed to checkout to complete your order.">
+  <meta name="description" content="Review the books in your ReadMore shopping cart.">
   <meta name="keywords" content="book cart, online bookstore cart, readmore shopping cart, buy books online, bookstore checkout">
   <meta name="author" content="Filip Terzic">
 
@@ -41,18 +41,12 @@
         <div id="items-list"></div>
 
         <div class="d-flex gap-2 mt-2 flex-wrap">
-          <button
-            onclick="clearEntireCart()"
-            style="background:none; border:1px solid rgba(155,35,53,0.3); color:var(--red-accent); border-radius:5px; padding:0.4rem 1rem; font-size:0.8rem; cursor:pointer; transition:all 0.2s;"
-            onmouseover="this.style.background='rgba(155,35,53,0.08)'"
-            onmouseout="this.style.background='none'">
-            Clear Cart
-          </button>
-          <a href="books.html" style="background:none; border:1px solid var(--border); color:var(--brown-light); border-radius:5px; padding:0.4rem 1rem; font-size:0.8rem; transition:all 0.2s; display:inline-block;"
-             onmouseover="this.style.borderColor='var(--brown-lol)'; this.style.color='var(--brown-lol)'"
-             onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--brown-light)'">
-            Keep Shopping
-          </a>
+          <button onclick="clearEntireCart()" 
+            style="background:none; border:1px solid rgba(155,35,53,0.3); color:#9b2335; border-radius:5px; padding:0.4rem 1rem; font-size:0.8rem; cursor:pointer; transition:all 0.2s;"
+            onmouseover="this.style.background='rgba(155,35,53,0.08)'" onmouseout="this.style.background='none'"> Clear Cart</button>
+          <a href="books.html" style="background:none; border:1px solid #d4b896; color:#8b6347; border-radius:5px; padding:0.4rem 1rem; font-size:0.8rem; transition:all 0.2s; display:inline-block;"
+             onmouseover="this.style.borderColor='#5c3d2e'; this.style.color='#5c3d2e'"
+             onmouseout="this.style.borderColor='#d4b896'; this.style.color='#8b6347'">Keep Shopping</a>
         </div>
       </div>
 
@@ -65,7 +59,7 @@
           </div>
           <div class="summary-line">
             <span>Shipping</span>
-            <span id="s-shipping" style="color:var(--green-accent);">Calculated at checkout</span>
+            <span id="s-shipping" style="color: #3d6b4a"></span>
           </div>
           <div class="summary-line">
             <span>Tax (8%)</span>
@@ -75,12 +69,10 @@
             <span>Total</span>
             <span class="total-amount" id="s-total">$0.00</span>
           </div>
-          <button class="btn-checkout-now" onclick="doCheckout()">
-            Proceed to Checkout
-          </button>
+          <button class="btn-checkout-now" onclick="doCheckout()">Proceed to Checkout</button>
           <a href="books.html" class="continue-link">Continue Shopping</a>
 
-          <p id="shipping-note" style="font-size:0.75rem; color:var(--brown-pale); margin-top:1rem; text-align:center;"></p>
+          <p id="shipping-note" style="font-size:0.75rem; color:#c4a882; margin-top:1rem; text-align:center;"></p>
         </div>
       </div>
 
@@ -113,12 +105,7 @@
       var lineTotal = (item.price * item.qty).toFixed(2);
       return `
         <div class="cart-item-row" id="row-${item.id}">
-          <img
-            class="cart-item-cover"
-            src="${item.cover}"
-            alt="${item.title}"
-            onerror="this.src='https://placehold.co/70x95/5c3d2e/f5e6c8?text=?'"
-          />
+          <img class="cart-item-cover" src="${item.cover}" alt="${item.title}" onerror="this.src='https://placehold.co/70x95/5c3d2e/f5e6c8?text=?'"/>
           <div class="cart-item-details">
             <div class="cart-item-title">${item.title}</div>
             <div class="cart-item-author">by ${item.author}</div>
@@ -129,7 +116,7 @@
             <span class="qty-number">${item.qty}</span>
             <div class="qty-btn" onclick="changeItemQty(${item.id}, +1)">+</div>
           </div>
-          <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--brown-dark); font-weight:700; min-width:65px; text-align:right;">
+          <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#2c1810; font-weight:700; min-width:65px; text-align:right;">
             $${lineTotal}
           </div>
           <button class="btn-remove" onclick="deleteItem(${item.id})" title="Remove">✕</button>
@@ -142,24 +129,24 @@
   }
 
   function updateSummary(items) {
-    var subtotal   = items.reduce(function(s, i) { return s + i.price * i.qty; }, 0);
-    var count      = items.reduce(function(s, i) { return s + i.qty; }, 0);
-    var tax        = subtotal * 0.08;
-    var shipping   = subtotal >= 30 ? 'Free' : '$4.99';
+    var subtotal = items.reduce(function(s, i) { return s + i.price * i.qty; }, 0);
+    var count = items.reduce(function(s, i) { return s + i.qty; }, 0);
+    var tax = subtotal * 0.08;
+    var shipping= subtotal >= 30 ? 'Free' : '$4.99';
     var shippingVal = subtotal >= 30 ? 0 : 4.99;
-    var total      = subtotal + tax + shippingVal;
+    var total = subtotal + tax + shippingVal;
 
-    document.getElementById('s-count').textContent    = count;
+    document.getElementById('s-count').textContent = count;
     document.getElementById('s-subtotal').textContent = '$' + subtotal.toFixed(2);
     document.getElementById('s-shipping').textContent = shipping;
-    document.getElementById('s-tax').textContent      = '$' + tax.toFixed(2);
-    document.getElementById('s-total').textContent    = '$' + total.toFixed(2);
+    document.getElementById('s-tax').textContent = '$' + tax.toFixed(2);
+    document.getElementById('s-total').textContent = '$' + total.toFixed(2);
 
     
   }
 
-  function changeItemQty(id, delta) {
-    updateQty(id, delta);
+  function changeItemQty(id, barcelona) {
+    updateQty(id, barcelona);
     renderCart();
   }
 
@@ -185,7 +172,7 @@
     var items = getCart();
     if (items.length === 0) return;
 
-    showToast('Order placed! Thank you for your purchase.', 'success');
+    showToast('Order placed! Thank you for purchase.', 'success');
     setTimeout(function() {
       localStorage.removeItem('readmore_cart');
       updateCartBadge();

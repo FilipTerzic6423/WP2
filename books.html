@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Books - ReadMore</title>
-  <meta name="description" content="Browse the full ReadMore bookstore collection. Discover classic literature, fantasy, mystery, sci-fi and more. Find your next favorite book.">
+  <meta name="description" content="Discover full ReadMore bookstore collection. Discover classic literature, fantasy, mystery, sci-fi etc. Find your next favorite book.">
   <meta name="keywords" content="books online, bookstore, buy books online, classic books, fantasy books, mystery novels, sci fi books, ReadMore bookstore">
   <meta name="author" content="Filip Terzic">
 
   <meta property="og:title" content="Books - ReadMore">
-  <meta property="og:description" content="Explore the full collection of books at ReadMore. Filter by genre, search authors, and find your next great read.">
+  <meta property="og:description" content="Explore the full collection of books at ReadMore. Find your next great read.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://filipterzic6423.github.io/WP2/books.html">
 
@@ -30,12 +30,7 @@
   <div class="filter-panel">
 
     <div style="flex: 1; min-width: 200px;">
-      <input
-        type="text"
-        id="search-box"
-        class="form-control"
-        placeholder="Search by title, author, genre…"
-      />
+      <input type="text" id="search-box" class="form-control" placeholder="Search by title, author, genre…"/>
     </div>
 
     <select id="genre-select" class="form-select" style="min-width: 155px;">
@@ -49,11 +44,11 @@
     </select>
 
     <select id="sort-select" class="form-select" style="min-width: 175px;">
-      <option value="">Sort: Default</option>
-      <option value="price-low">Price: Low to High</option>
-      <option value="price-high">Price: High to Low</option>
-      <option value="rating">Best Rated</option>
-      <option value="title">Title A-Z</option>
+      <option value="">Sort</option>
+      <option value="price-low">Low to High Price</option>
+      <option value="price-high">High to Low Price</option>
+      <option value="rating">Rating</option>
+      <option value="title">A-Z</option>
       <option value="year-new">Newest First</option>
       <option value="year-old">Oldest First</option>
     </select>
@@ -69,16 +64,14 @@
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4" id="books-grid"></div>
 
   <div id="no-results" class="no-results-msg" style="display:none;">
-        <h3>No books found</h3>
+    <h3>No books found</h3>
     <p>Try other filters!</p>
     <button class="btn-primary-custom mt-3" onclick="resetAll()">Clear All Filters</button>
   </div>
 
   <div class="load-more-wrap" id="load-more-wrap" style="display:none;">
-    <button class="btn-load-more" id="load-more-btn" onclick="loadMore()">
-      Load More Books
-    </button>
-    <p id="load-more-info" style="font-size:0.8rem; color:var(--brown-pale); margin-top:0.6rem;"></p>
+    <button class="btn-load-more" id="load-more-btn" onclick="loadMore()">Load More Books</button>
+    <p id="load-more-info" style="font-size:0.8rem; color:#c4a882; margin-top:0.6rem;"></p>
   </div>
 
 </div>
@@ -126,7 +119,7 @@
     } catch (err) {
       console.log('Error fetching books:', err.message);
       loadingEl.style.display = 'none';
-      showMessage('page-msg', 'Could not load the book catalogue: ' + err.message, 'error');
+      showMessage('page-msg', 'Could not load books: ' + err.message, 'error');
     }
   }
 

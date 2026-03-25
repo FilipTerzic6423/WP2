@@ -22,6 +22,9 @@ function loadNavbar(activePage) {
             <li class="nav-item">
               <a class="nav-link ${activePage === 'author' ? 'active' : ''}" href="author.html">Author</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Documentation.pdf">Documentation</a>
+            </li>
           </ul>
           <a href="cart.html" class="nav-cart-btn ${activePage === 'cart' ? 'active' : ''}">
             Cart
@@ -58,6 +61,7 @@ function loadFooter() {
             <ul class="footer-links">
               <li><a href="contact.html">Contact Us</a></li>
               <li><a href="cart.html">My Cart</a></li>
+              <li><a href="sitemap.xml">Sitemap</a></li>
             </ul>
           </div>
         </div>
